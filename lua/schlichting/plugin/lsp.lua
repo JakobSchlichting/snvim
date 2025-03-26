@@ -4,8 +4,8 @@ return {
     dependencies = {
         -- LSP Support
         {'neovim/nvim-lspconfig'},             -- Required
-        {'williamboman/mason.nvim'},           -- Optional
-        {'williamboman/mason-lspconfig.nvim'}, -- Optional
+        -- {'williamboman/mason.nvim'},           -- Optional
+        -- {'williamboman/mason-lspconfig.nvim'}, -- Optional
 
         -- Autocompletion
         {'hrsh7th/nvim-cmp'},     -- Required
@@ -51,6 +51,60 @@ return {
             vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
             vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         end)
+
+        require("lspconfig").gopls.setup({})
+        require("lspconfig").hyprls.setup({})
+        require("lspconfig").pylsp.setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = {'W391'},
+                            maxLineLength = 100
+                        }
+                    }
+                }
+            }
+        })
+        require("lspconfig").ts_ls.setup({})
+        require("lspconfig").lua_ls.setup({
+            on_init = function(client)
+                if client.workspace_folders then
+                    local path = client.workspace_folders[1].name
+                    if path ~= vim.fn.stdpath('config') and (vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc')) then
+                        return
+                    end
+                end
+
+                client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                    runtime = {
+                        version = 'LuaJIT'
+                    },
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            vim.env.VIMRUNTIME
+                        }
+                    }
+                })
+            end,
+            settings = {
+                Lua = {}
+            }
+        })
+        require("lspconfig").yamlls.setup({})
+        require("lspconfig").marksman.setup({})
+        require("lspconfig").dockerls.setup({})
+        require("lspconfig").bashls.setup({})
+        require("lspconfig").markdown_oxide.setup({})
+        require("lspconfig").buf_ls.setup({})
+        require("lspconfig").cmake.setup({})
+        require("lspconfig").docker_compose_language_service.setup({})
+        require("lspconfig").terraform_lsp.setup({})
+        require("lspconfig").ansiblels.setup({})
+        require("lspconfig").html.setup({})
+        require("lspconfig").htmx.setup({})
+        require("lspconfig").templ.setup({})
 
         lsp.setup()
 
