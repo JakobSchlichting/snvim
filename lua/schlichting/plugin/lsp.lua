@@ -105,6 +105,7 @@ return {
         require("lspconfig").html.setup({})
         require("lspconfig").htmx.setup({})
         require("lspconfig").templ.setup({})
+        require("lspconfig").nixd.setup({})
 
         lsp.setup()
 

@@ -30,7 +30,7 @@ return {
             },
             filetype = "gotmpl",
             used_by = {"gohtmltmpl", "gotexttmpl", "gotmpl"}
-        }    
+        }
         vim.treesitter.language.register('templ', 'templ')
     end,
 }
