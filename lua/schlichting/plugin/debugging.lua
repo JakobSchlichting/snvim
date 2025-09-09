@@ -1,4 +1,4 @@
-// TODO: add debbuging config here
+# TODO: add debbuging config here
 return {
     "rcarriga/nvim-dap-ui",
     dependencies = {
