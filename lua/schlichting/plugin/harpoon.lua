@@ -13,6 +13,5 @@ return {
         {"<C-t>", function() require(ui).nav_file(2) end, desc = "go to harpoon 2"},
         {"<C-n>", function() require(ui).nav_file(3) end, desc = "go to harpoon 3"},
         {"<C-s>", function() require(ui).nav_file(4) end, desc = "go to harpoon 4"},
-
     },
 }
