@@ -107,6 +107,15 @@ return {
         require("lspconfig").templ.setup({})
         require("lspconfig").nixd.setup({})
         require("lspconfig").ols.setup({})
+        require("lspconfig").lspconfig.helm_ls.setup {
+            settings = {
+                ['helm-ls'] = {
+                    yamlls = {
+                        path = "yaml-language-server",
+                    }
+                }
+            }
+        }
 
         lsp.setup()
 
