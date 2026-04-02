@@ -9,11 +9,11 @@ return {
         },
         integrations = {
             -- TODO: add all plugin interopts here
-            telesope = { enable = true, },
+            telescope = { enabled = true },
         },
     },
-    config = function(opts)
+    config = function(_, opts)
 	    require("catppuccin").setup(opts)
-    	vim.cmd([[colorscheme catppuccin]])
+	    vim.cmd.colorscheme("catppuccin")
     end,
 }
