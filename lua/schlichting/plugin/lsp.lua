@@ -3,6 +3,7 @@ return {
     dependencies = {
         { "hrsh7th/nvim-cmp" },
         { "hrsh7th/cmp-nvim-lsp" },
+        { "hrsh7th/cmp-buffer" },
         { "L3MON4D3/LuaSnip" },
     },
     config = function()
@@ -41,6 +42,8 @@ return {
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
+            }, {
+                { name = "buffer" },
             }),
         })
 
@@ -80,6 +83,7 @@ return {
             "templ",
             "nixd",
             "ols",
+            "texlab",
         }
 
         for _, server in ipairs(default_servers) do
