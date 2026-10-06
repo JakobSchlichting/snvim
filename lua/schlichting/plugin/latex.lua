@@ -3,7 +3,6 @@ return {
     -- vimtex must not be lazy-loaded, otherwise inverse search breaks
     lazy = false,
     init = function()
-        vim.g.maplocalleader = " "
         vim.g.vimtex_view_method = "zathura"
 
         vim.api.nvim_create_autocmd("FileType", {

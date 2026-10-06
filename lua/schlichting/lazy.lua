@@ -12,6 +12,7 @@ if not vim.uv.fs_stat(lazy_install_path) then
 end
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.opt.rtp:prepend(lazy_install_path)
 
 require("lazy").setup({
