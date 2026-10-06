@@ -67,7 +67,6 @@ return {
         local default_servers = {
             "gopls",
             "hyprls",
-            "ts_ls",
             "yamlls",
             "marksman",
             "dockerls",
@@ -107,6 +106,22 @@ return {
             },
         })
         vim.lsp.enable("pylsp")
+
+        -- TypeScript 7 has no tsserver anymore, its native server ships as `tsc --lsp`
+        vim.lsp.config("tsgo", {
+            capabilities = capabilities,
+            cmd = function(dispatchers, config)
+                local cmd = "tsc"
+                local local_cmd = config.root_dir and config.root_dir .. "/node_modules/.bin/tsgo"
+                if local_cmd and vim.fn.executable(local_cmd) == 1 then
+                    cmd = local_cmd
+                elseif vim.fn.executable("tsgo") == 1 then
+                    cmd = "tsgo"
+                end
+                return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
+            end,
+        })
+        vim.lsp.enable("tsgo")
 
         vim.lsp.config("lua_ls", {
             capabilities = capabilities,

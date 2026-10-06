@@ -22,7 +22,7 @@ sudo pacman -S --needed neovim git gcc make unzip tree-sitter-cli ripgrep fd
 Install the language servers from the official repos:
 
 ```sh
-sudo pacman -S --needed gopls typescript-language-server yaml-language-server \
+sudo pacman -S --needed gopls typescript yaml-language-server \
     marksman bash-language-server lua-language-server python-lsp-server \
     markdown-oxide buf dockerfile-language-server vscode-html-languageserver \
     ols texlab
