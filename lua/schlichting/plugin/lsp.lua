@@ -83,6 +83,7 @@ return {
             "nixd",
             "ols",
             "texlab",
+            "rust_analyzer",
         }
 
         for _, server in ipairs(default_servers) do

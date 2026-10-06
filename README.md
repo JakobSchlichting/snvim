@@ -25,7 +25,7 @@ Install the language servers from the official repos:
 sudo pacman -S --needed gopls typescript yaml-language-server \
     marksman bash-language-server lua-language-server python-lsp-server \
     markdown-oxide buf dockerfile-language-server vscode-html-languageserver \
-    ols texlab
+    ols texlab rust-analyzer
 ```
 
 and the ones from the AUR:
